@@ -95,3 +95,61 @@ public function isLogin($param) {
 # 通用功能
 
 ## 查询功能
+
+前台代码：
+
+```html
+<form class="form-inline">
+    <input class="form-control" type="text" name="materialName" placeholder="素材名称..." value="{:input('get.materialName')}">
+    <button type="submit" class="btn btn-default">
+        <i class="glyphicon glyphicon-search"></i>
+        &nbsp;查询
+    </button>
+</form>
+```
+
+控制器代码：
+
+```php
+// 从配置中获取分页数
+$pageSize     = config('paginate.var_page');
+// 获取通过get方法传来的名称
+$materialName = Request::instance()->get('materialName');
+// 调用查询逻辑
+$materials    = $this->materialService->searchMaterial($materialName, $pageSize);
+```
+
+查询逻辑：
+
+```php
+public function searchMaterial($materialName, $pageSize) {
+    $material = new Material();
+    // 模糊查询
+    if (!empty($materialName)) {
+        $material->where('designation', 'like', '%'. $materialName. '%');
+    }
+    // 排序分页
+    $materials = $material->order('id desc')->paginate($pageSize, false, [
+        'query' => [
+            'materialName' => $materialName,
+        ],
+        'var_page' => 'page',
+    ]);
+
+    return $materials;
+}
+```
+
+## 图片上传功能
+
+```php
+public static function uploadImage($file) {
+    $info = $file->validate(['size'=>2048000])->move(PUBLIC_PATH);
+
+    if ($info) {
+        return $info->getSaveName();
+    } else {
+        return $file->getError();
+    }
+}
+```
