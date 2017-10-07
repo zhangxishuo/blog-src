@@ -14,5 +14,8 @@
         <%- partial('common/footer', null, {cache: !config.relative_link}) %>
         <%- partial('common/scripts') %>
     </div>
+    <%- live2d({
+        model: "koharu"
+    }) %>
 </body>
 </html>
