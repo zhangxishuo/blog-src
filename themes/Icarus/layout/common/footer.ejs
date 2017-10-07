@@ -1,7 +1,29 @@
 <footer id="footer">
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %><br>
+            &copy;
+            <%= date(new Date(), 'YYYY') %>
+            <i class="fa fa-star"></i>
+            <%= config.author || config.title %><br>
+        </div>
+
+        <div id="footer-info" class="inner">
+            <span id="busuanzi_container_site_uv">
+                <i class="fa fa-graduation-cap"></i>
+                访问用户：
+                <span id="busuanzi_value_site_uv"></span>
+                人
+            </span>
+
+            |
+
+            <span id="busuanzi_container_site_pv">
+                <i class="fa fa-mouse-pointer"></i>
+                访问次数：
+                <span id="busuanzi_value_site_pv"></span>
+                次
+            </span>
         </div>
     </div>
 </footer>
