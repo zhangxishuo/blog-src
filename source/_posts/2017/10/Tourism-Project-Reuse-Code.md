@@ -92,9 +92,21 @@ public function isLogin($param) {
 }
 ```
 
+# 特殊处理
+
+## 数据库存储数组
+
+上传多张图片，得到多张图片的存储路径，我们将其存储为一个php的数组，但是该数组是不能直接存储进数据库的，所以我们希望能将数组转化为数据库中能够存储的数据格式。
+
+利用`json_encode`，将数组转化为`json`字符串，然后存入数据库；读取时，将字符串取出来，利用`json_decode`，将字符串再转为初始的数组，再进行操作。
+
+## 微信分享
+
+微信分享功能，我们用到了`share.js`这款插件，[share.js项目地址](http://overtrue.me/share.js/)。
+
 # 通用功能
 
-## 查询功能
+## 查询操作
 
 前台代码：
 
@@ -140,7 +152,9 @@ public function searchMaterial($materialName, $pageSize) {
 }
 ```
 
-## 图片上传功能
+## 图片操作
+
+图片上传功能
 
 ```php
 public static function uploadImage($file) {
@@ -150,6 +164,29 @@ public static function uploadImage($file) {
         return $info->getSaveName();
     } else {
         return $file->getError();
+    }
+}
+```
+
+图片删除功能
+
+```php
+public static function deleteImage($imagePath) {
+    if ($imagePath !== 'upload/') {
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    }
+}
+```
+
+删除多图功能
+```php
+public static function deleteManyImages($imagePaths) {
+    $imagePaths = json_decode($imagePaths);
+    foreach ($imagePaths as $imagePath) {
+        $imagePath = PUBLIC_PATH . '/' .$imagePath;
+        self::deleteImage($imagePath);
     }
 }
 ```

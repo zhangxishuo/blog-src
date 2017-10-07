@@ -36,7 +36,6 @@ customize:
 widgets:
     - recent_posts
     - category
-    - archive
     - tagcloud
     - links
 

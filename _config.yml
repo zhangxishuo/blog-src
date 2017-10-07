@@ -4,15 +4,15 @@
 
 # Site
 title: 张喜硕
-subtitle: 张喜硕的博客
-description: 一袭青衣，诉梦月谣！
+subtitle: 张喜硕
+description: 技术经验分享，我们一同成长！
 author: 张喜硕
 language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://zhangxishuo.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
