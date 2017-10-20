@@ -11,36 +11,42 @@ tags:
 
 打开终端，进入项目文件夹，查看隐藏文件，`ls -a`。
 
-    zhangxishuo@zhangxishuo-Inspiron-7559:~/桌面/FullStack/webapp$ ls -a                             
-    .    bower_components  .editorconfig   Gruntfile.js  .jshintrc     package-lock.json  .tmp       
-    ..   bower.json        .gitattributes  .idea         node_modules  README.md          .yo-rc.json
-    app  .bowerrc          .gitignore      .jscsrc       package.json  test                          
+```
+zhangxishuo@zhangxishuo-Inspiron-7559:~/桌面/FullStack/webapp$ ls -a
+.                 .bowerrc        .idea         package-lock.json
+..                .editorconfig   .jscsrc       README.md
+app               .gitattributes  .jshintrc     test
+bower_components  .gitignore      node_modules  .tmp
+bower.json        Gruntfile.js    package.json  .yo-rc.json
+```
 
 根据名称大致可以理解这里有一个名为`.editorconfig`的隐藏文件。从名称可以大致推断出这个文件可能与我们要修改的代码缩进有关。
 
 编辑这个文件，得到如下内容。
 
-    # EditorConfig helps developers define and maintain consistent
-    # coding styles between different editors and IDEs
-    # editorconfig.org
+```
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# editorconfig.org
 
-    root = true
+root = true
 
 
-    [*]
+[*]
 
-    # Change these settings to your own preference
-    indent_style = space
-    indent_size = 2
+# Change these settings to your own preference
+indent_style = space
+indent_size = 2
 
-    # We recommend you to keep these unchanged
-    end_of_line = lf
-    charset = utf-8
-    trim_trailing_whitespace = true
-    insert_final_newline = true
+# We recommend you to keep these unchanged
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
 
-    [*.md]
-    trim_trailing_whitespace = false
+[*.md]
+trim_trailing_whitespace = false
+```
 
 `.editorconfig`是一项编辑时的配置文件，该文件中的配置默认会覆盖编辑器中的配置。
 

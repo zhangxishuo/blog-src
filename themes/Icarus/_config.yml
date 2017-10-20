@@ -21,7 +21,7 @@ customize:
         author_title: Full Stack Developer & Designer
         location: Tianjin, China
         follow: https://github.com/zhangxishuo
-    highlight: monokai
+    highlight: 
     sidebar: right # sidebar position, options: left, right or leave it empty
     thumbnail: false # enable posts thumbnail, options: true, false
     favicon: images/logo.png
