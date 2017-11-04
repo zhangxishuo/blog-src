@@ -74,7 +74,7 @@ console.log($http.get(url));
 
 我们不用包含回调的`then`方法，我们就打印出来看看`$http.get(url)`的返回值到底是什么！
 
-![](image/0.png)
+![](/images/2017/10/Deeply-Understand-Callback/0.png)
 
 我们看到打印结果，返回值是一个拥有很多属性`Promise`对象，但是这个对象怎么用呢？这个对象的一堆什么`$$state`、`value`、`config`等属性，怕是只有`Google`内部维护这个框架的工程师才能看懂都是什么属性吧。
 

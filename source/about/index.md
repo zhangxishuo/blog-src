@@ -9,5 +9,8 @@ layout: "page"
 学历：2016级本科生
 方向：Web开发
 
-语言：C、C++、PHP
-框架：ThinkPHP
+后台：C、C++、PHP、Java
+框架：ThinkPHP、SpringBoot
+
+前台：HTML、CSS、JavaScript
+框架：AngularJS
