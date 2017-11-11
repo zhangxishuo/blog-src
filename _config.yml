@@ -4,10 +4,10 @@
 
 # Site
 title: 张喜硕
-subtitle: 张喜硕
+subtitle: 技术经验分享，我们一同成长！
 description: 技术经验分享，我们一同成长！
 author: 张喜硕
-language: zh-CN
+language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: Icarus
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

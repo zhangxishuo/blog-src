@@ -25,30 +25,86 @@ tags:
 
 每个机器人都有一个特定的`Hook`地址，其实只是一个形象的名字，其实就是我们每天都能见到的`url`，在这个`url`上以`POST`形式发送数据，就会在钉钉群中发消息。
 
-# 请求方法
+# 思路
+
+思路很明确，新建`DingController`控制器`push`方法，当访问该路由时，`push`再去调用`M`层中相应的方法获取需要推送的信息，再调用官方的`request_by_curl`方法实现消息推送。
+
+# 代码实现
+
+## 配置Hook
+
+机器人的`Hook`地址可能会经常改动，所以我们要将其配置在`config.php`中动态获取，方便以后修改。
+
+在`application/config.php`中，添加一个`hook`配置项：
 
 ```php
-function request_by_curl($remote_server, $post_string) {  
-    $ch = curl_init();  
-    curl_setopt($ch, CURLOPT_URL, $remote_server);
-    curl_setopt($ch, CURLOPT_POST, 1); 
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5); 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array ('Content-Type: application/json;charset=utf-8'));
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_string);  
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
-    $data = curl_exec($ch);
-    curl_close($ch);  
-               
-    return $data;  
-}  
+//钉钉机器人Hook地址
+'hook' => 'https://oapi.dingtalk.com/robot/send?xxxxxx'
 ```
 
-本来以为会很复杂，其实官网已经把方法都给我们写好了，我们只需要使用官方给我们提供的`request_by_curl`方法，第一个参数为机器人的`HOOK`地址，第二个参数为我们需要传过去的消息。
+## 控制器
 
 ```php
-    public function pushDing($message) {
+<?php
+namespace app\index\controller;
 
-        $webhook = "欲推送的机器人Hook地址";
+use think\Controller;
+use app\index\model\Ding;
+
+class DingController extends Controller {
+
+    /**
+    * 自动推送钉钉消息方法
+    */
+    public function push() {
+
+        $ding = new Ding();
+        $time = time();
+        $time = $time % 86400;
+
+        // 上午
+        if ($time <= 600) {
+            $message = $ding->getMessage('morning');
+            $ding->autoPush($message);
+        }
+        // 下午
+        else if ($time >= 20700 && $time <= 21300) {
+            $message = $ding->getMessage('afternoon');
+            $ding->autoPush($message);
+        }
+        // 晚上
+        else if ($time >= 35700 && $time <= 36300) {
+            $message = $ding->getMessage('night');
+            $ding->autoPush($message);
+        }
+    }
+}
+```
+
+## 模型层
+
+```php
+<?php
+
+namespace app\index\model;
+
+use app\index\model\Term;
+use app\index\model\User;
+use app\index\model\Week;
+
+/**
+ * 张喜硕
+ * 钉钉推送类
+ */
+
+class Ding {
+
+    /**
+     * 钉钉Hook推送消息方法
+     */
+    public function autoPush($message) {
+
+        $webhook = config('hook');
 
         $data = array (
             'msgtype'  => 'text',
@@ -63,15 +119,144 @@ function request_by_curl($remote_server, $post_string) {
 
         echo $result;
     }
+
+    /**
+     * 官方提供的推送方法
+     */
+    public function request_by_curl($remote_server, $post_string) {
+
+        $ch = curl_init();  
+        curl_setopt($ch, CURLOPT_URL, $remote_server);
+        curl_setopt($ch, CURLOPT_POST, 1); 
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5); 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array ('Content-Type: application/json;charset=utf-8'));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $data = curl_exec($ch);
+        curl_close($ch);  
+                   
+        return $data;  
+    }
+
+    /**
+    * 根据时间获取相应消息
+    */
+    public function getMessage($timeMsg) {
+
+        $knobs = [
+            '[第一节]',
+            '[第二节]',
+            '[第三节]',
+            '[第四节]',
+            '[第五节]'
+        ];
+
+        $users = User::getUsualUsers();
+        $term  = Term::getCurrentTerm();
+        $week  = new Week();
+        $time  = strtotime($term->start_time);
+
+        $current_day  = User::getDay();
+        $current_week = $week->WeekDay($time, time());
+
+        foreach ($users as $key => $user) {
+            $user->term = $term->id;
+            $user->day  = $current_day;
+        }
+
+        $messages = [];
+
+        if ($timeMsg == 'morning') {
+
+            $messages = $this->putMessage($messages, $knobs, $users, $current_week, 1);
+            $messages = $this->putMessage($messages, $knobs, $users, $current_week, 2);
+        } else if ($timeMsg == 'afternoon') {
+
+            $messages = $this->putMessage($messages, $knobs, $users, $current_week, 3);
+            $messages = $this->putMessage($messages, $knobs, $users, $current_week, 4);
+        } else if ($timeMsg == 'night') {
+
+            $messages = $this->putMessage($messages, $knobs, $users, $current_week, 5);
+        }
+
+        $dingMsg = "";
+
+        foreach ($messages as $key => $message) {
+
+            $dingMsg = $dingMsg . $message . "\n";
+        }
+
+        return $dingMsg;
+    }
+
+    /**
+    * 拼接用户课程状态字符串
+    */
+    public function putMessage($messages, $knobs, $users, $week, $knob) {
+
+        array_push($messages, $knobs[$knob - 1]);
+
+        foreach ($users as $key => $user) {
+            
+            $message = $this->getState($user, $week, $knob);
+            $message = $this->dataFormat($key, $user, $message);
+
+            array_push($messages, $message);
+        }
+
+        return $messages;
+    }
+
+    /**
+    * 获取用户状态信息
+    */
+    public function getState($user, $week, $knob) {
+
+        $user->knob = $knob;
+
+        $state = $user->CheckedState($week);
+
+        switch ($state) {
+            case 1:
+                $message = '请假';
+                break;
+            
+            case 2:
+                $message = '有课';
+                break;
+
+            case 3:
+                $message = '加班';
+                break;
+
+            case 4:
+                $message = '休息';
+                break;
+
+            case 5:
+                $message = '无课';
+                break;
+
+            case 6:
+                $message = '缺班';
+                break;
+        }
+
+        return $message;
+    }
+
+    /**
+    * 格式化数据
+    */
+    public function dataFormat($key, $user, $message) {
+
+        $temp = '' . $key + 1 . '.' . $user->name . ' ' . $message;
+        return $temp;
+    }
+
+}
 ```
-
-该方法是发送文本格式的信息，同时官方还支持`link`和简易的`markdown`格式。
-
-# 思路
-
-因为每个系统都可能不同，获取信息的方式也不同，这里就不给出本系统获取消息的源代码了。这里给大家介绍一下钉钉机器人自动推送的大体思路。
-
-思路很明确，新建`DingController`控制器`autoPush`方法，当访问该路由时，`autoPush`再去调用`M`层中相应的方法获取需要推送的信息，再调用`pushDing`方法实现消息推送。
 
 # 定时任务
 
