@@ -344,3 +344,74 @@ LT：本地时间
 ## SHELL
 
 这里，我们需要写一个`Shell`脚本去完成这个访问路由的操作。
+
+> Shell脚本（英语：Shell script），又称Shell命令稿、程序化脚本，是一种电脑程序与文本文件，内容由一连串的shell命令组成，经由Unix Shell直译其内容后运作。被当成是一种脚本语言来设计，其运作方式与直译语言相当，由Unix shell扮演命令行解释器的角色，在读取shell脚本之后，依序运行其中的shell命令，之后输出结果。利用shell脚本可以进行系统管理，文件操作等。
+
+依据个人理解，`Shell`就是把命令行里执行的命令写在一个文件中去执行。
+
+我可以在命令行中`echo hello world`，也可以把`echo hello world`写在一个`*.sh`格式的脚本里，再去执行这个脚本，这与直接执行命令结果是相同的。
+
+所以，新建一个`ding.sh`文件，写入如下命令：
+
+```bash
+curl http://www.test.com/courseManageSystem/public/index.php/index/ding/push
+```
+
+我们调整一下系统时间，手动执行一下这个脚本。
+
+```bash
+bash ding.sh
+```
+
+查看钉钉群，成功。
+
+![](/images/2017/11/11/ding-auto-bot/6.png)
+
+## 定时任务
+
+脚本写完了，我们考虑的就是设置一个定时任务，自动执行这个脚本。
+
+`crontab`是`Linux`下的一个定时任务工具，我们可以通过这款工具来实现定时执行脚本的操作。
+
+打开命令行，执行如下命令，编辑定时任务配置项。
+
+```bash
+crontab -e
+```
+
+![](/images/2017/11/11/ding-auto-bot/7.png)
+
+最后几行，就是我们要设置定时任务的配置。
+
+`m(minute)`：分钟`(0 - 59)`
+
+`h(hour)`：小时`(0 - 23)`
+
+`dom(day of month)`：天`(1 - 31)`
+
+`mon(month)`：月`(1 - 12)`
+
+`dow(day of week)`：星期几`(1 - 7)`
+
+`command`：要执行的命令
+
+假设我们要设置每天`8:00`执行该脚本，我们就做如下配置：
+
+```bash
+# m h  dom mon dow   command
+  0 8   *   *   *    bash /opt/lampp/htdocs/courseManageSystem/ding.sh
+```
+
+`Ctrl + X`离开。储存更动过的缓冲区吗？回答`Y`保存。
+
+配置之后，我们可以输入以下命令查看我们配置的定时任务。
+
+```bash
+crontab -l
+```
+
+# 总结
+
+如此，我们的自动推送机器人就完成了，我们可以直接在服务器中执行脚本，设置定时任务，完成自动推送。
+
+**使用过程中请开启`xampp`等必要的运行环境。**
