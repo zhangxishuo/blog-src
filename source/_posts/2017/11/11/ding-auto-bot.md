@@ -187,33 +187,16 @@ public function getState($user, $week, $knob) {
 
     $state = $user->CheckedState($week);
 
-    switch ($state) {
-        case 1:
-            $message = '请假';
-            break;
-        
-        case 2:
-            $message = '有课';
-            break;
+    $messages = [
+        '请假',
+        '有课',
+        '加班',
+        '休息',
+        '无课',
+        '缺班'
+    ];
 
-        case 3:
-            $message = '加班';
-            break;
-
-        case 4:
-            $message = '休息';
-            break;
-
-        case 5:
-            $message = '无课';
-            break;
-
-        case 6:
-            $message = '缺班';
-            break;
-    }
-
-    return $message;
+    return $messages[$state - 1];
 }
 
 /**
