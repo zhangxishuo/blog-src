@@ -79,7 +79,7 @@ tags:
  */
 public function request_by_curl($remote_server, $post_string) {
 
-    $ch = curl_init();  
+    $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $remote_server);
     curl_setopt($ch, CURLOPT_POST, 1); 
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5); 
@@ -88,9 +88,9 @@ public function request_by_curl($remote_server, $post_string) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     $data = curl_exec($ch);
-    curl_close($ch);  
+    curl_close($ch);
                
-    return $data;  
+    return $data;
 }
 ```
 
@@ -247,24 +247,19 @@ public function autoPush($message) {
 public function push() {
 
     $ding = new Ding();
+    $hour = date("H");
 
-    $time = time();
-    $time = $time % 86400;
-
-    // 上午
-    if ($time <= 600) {
+    if ($hour >= 7 && $hour <= 9) {
 
         $message = $ding->getMessage('morning');
         $ding->autoPush($message);
     }
-    // 下午
-    else if ($time >= 20700 && $time <= 21300) {
+    else if ($hour >= 13 && $hour <= 15) {
 
         $message = $ding->getMessage('afternoon');
         $ding->autoPush($message);
     }
-    // 晚上
-    else if ($time >= 35700 && $time <= 36300) {
+    else if ($hour >= 17 && $hour <= 19) {
 
         $message = $ding->getMessage('night');
         $ding->autoPush($message);
@@ -272,41 +267,12 @@ public function push() {
 }
 ```
 
-## 时间戳
+这里的`date`函数根据设置的时区自动将时间戳转化为该时区的时间，`ThinkPHP`框架中，在`config.php`中配置默认时区。
 
-早中晚推送时间分别为`8:00`、`13:50`、`18:00`，可上文对时间戳的处理却比该时间晚了`8`小时，可能有人不理解，这里我们详解一下时间戳。
-
-打开终端，分别键入命令`date`(输出时间)和`date +%s`(输出时间戳)。
-
-![](/images/2017/11/11/ding-auto-bot/4.png)
-
-输出时间为`08:45`，但是如果根据这个时间戳去手动计算时间的话，时间为`00:45`。
-
-其实这是一个误区，我们一起看看时间戳的标准定义。
-
-### 定义
-
-> 时间戳是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。
-
-### 术语简称
-
-UTC：世界协调时间
-CST：北京时间
-LT：本地时间
-
-### Windows时间
-
-`Windows`启动时，读取`bios`的时间作为`LT`时间。
-
-也就是说，如果是`Windows`的服务器，日期与时间戳是对应的。
-
-### Linux时间
-
-`Linux`启动时，读取`bios`的时间作为`UTC`时间。
-
-这就是我们上文中的情形，`Linux`的`bios`中存储的是世界标准时间，而我们使用`date`命令打印出来的日期时间，是系统通过我们设置的时区计算出来的。
-
-因为我们是`Linux`的服务器，所以要对时间戳进行如上述`push`方法中那样处理。
+```php
+// 默认时区
+'default_timezone'       => 'PRC',
+```
 
 # 自动化
 
