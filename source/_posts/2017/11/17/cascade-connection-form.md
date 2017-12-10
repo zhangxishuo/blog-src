@@ -104,15 +104,15 @@ tags:
 
 ```javascript
 function hotelGetCity() {
-    // 获取数据
+    /* 获取数据 */
     var city         = document.getElementById('city').innerHTML;
     var countryNode  = document.getElementById('hotel-country');
     var cityNode     = document.getElementById('hotel-city');
 
-    // 清空
+    /* 清空 */
     clear(cityNode);
 
-    // 请求
+    /* 请求 */
     var countryIndex = countryNode.selectedIndex;
     var url          = "/index/attraction/getCity?country=" + countryIndex;
     ajaxGet(url, function (response) {
@@ -124,16 +124,16 @@ function hotelGetCity() {
 }
 
 function hotelGetStar() {
-    // 获取数据
+    /* 获取数据 */
     var star         = document.getElementById('star').innerHTML;
     var countryNode  = document.getElementById('hotel-country');
     var cityNode     = document.getElementById('hotel-city');
     var starNode     = document.getElementById('hotel-star');
 
-    // 清空
+    /* 清空 */
     clear(starNode);
 
-    // 请求
+    /* 请求 */
     var countryIndex = countryNode.selectedIndex;
     var cityIndex    = cityNode.selectedIndex;
     var url          = "/index/attraction/getStar?country=" + countryIndex + "&city=" + cityIndex;
@@ -146,17 +146,17 @@ function hotelGetStar() {
 }
 
 function hotelGetName() {
-    // 获取数据
+    /* 获取数据 */
     var name         = document.getElementById('name').innerHTML;
     var countryNode  = document.getElementById('hotel-country');
     var starNode     = document.getElementById('hotel-star');
     var cityNode     = document.getElementById('hotel-city');
     var nameNode     = document.getElementById('hotel-name');
 
-    // 清空
+    /* 清空 */
     clear(nameNode);
 
-    // 请求
+    /* 请求 */
     var countryIndex = countryNode.selectedIndex;
     var cityIndex    = cityNode.selectedIndex;
     var starIndex    = starNode.selectedIndex;
