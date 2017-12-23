@@ -1,7 +1,7 @@
 ---
 title: 钉钉机器人自动推送
 date: 2017-11-11 19:37:00
-categories: 智能
+categories: 技术
 tags:
 - 钉钉
 - php

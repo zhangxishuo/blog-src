@@ -40,7 +40,7 @@ footer:
   since: 2017
 
   # Icon between year and copyright info.
-  icon: user
+  icon: anchor
 
   # If not defined, will be used `author` from Hexo main config.
   copyright:
@@ -84,11 +84,11 @@ index_with_subtitle: false
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
-  home: / || home
-  about: /about/ || user
-  tags: /tags/ || tags
-  categories: /categories/ || th
-  archives: /archives/ || archive
+  home: / || bars
+  about: /about/ || at
+  tags: /tags/ || bookmark-o
+  categories: /categories/ || file-text-o
+  archives: /archives/ || connectdevelop
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -120,10 +120,12 @@ scheme: Gemini
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
   GitHub: https://github.com/zhangxishuo || github
+  linkedin: https://www.linkedin.com/in/%E5%96%9C%E7%A1%95-%E5%BC%A0-513b54146/ || linkedin
+  Weibo: https://weibo.com/zxishuo || weibo
   #E-Mail: mailto:yourname@gmail.com || envelope
   #Google: https://plus.google.com/yourname || google
-  #Twitter: https://twitter.com/yourname || twitter
-  #FB Page: https://www.facebook.com/yourname || facebook
+  Twitter: https://twitter.com/zhangxishuo || twitter
+  #Facebook: https://www.facebook.com/yourname || facebook-official
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
   #YouTube: https://youtube.com/yourname || youtube
