@@ -1,0 +1,12 @@
+- title: Spring
+  content: Spring Framework 5.0. The right stack for the right job. End-to-end support for reactive & servlet based apps on the JVM.
+- title: AngularJS
+  content: AngularJS is the next generation framework where each component is designed to work with every other component in an interconnected way like a well-oiled machine.
+- title: Bootstrap
+  content: Sleek, intuitive, and powerful front-end framework for faster and easier web development.
+- title: ThinkPHP
+  content: ThinkPHP V5.0是一个为API开发而设计的高性能框架——是一个颠覆和重构版本，采用全新的架构思想，引入了很多的PHP新特性，优化了核心，减少了依赖，实现了真正的惰性加载，支持composer，并针对API开发做了大量的优化。
+- title: HTML
+  content: HTML是一种用于创建网页的标准标记语言。HTML是一种基础技术，常与CSS、JavaScript一起被众多网站用于设计令人赏心悦目的网页、网页应用程序以及移动应用程序的用户界面。网页浏览器可以读取HTML文件，并将其渲染成可视化网页。
+- title: CSS
+  content: 层叠样式表，一种用来为结构化文档添加样式的计算机语言，由W3C定义和维护。
