@@ -7,7 +7,7 @@ title: 张喜硕
 subtitle: 改变世界
 description: 改变世界
 author: 张喜硕
-language: zh-Hans
+language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
@@ -69,14 +69,21 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
+archive_generator:
+  per_page: 0
+tag_generator:
+  per_page: 0
+category_generator:
+  per_page: 0
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: react
+theme: raytaylorism
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/zhangxishuo/ZhangXishuo.github.io.git
+  repo: https://github.com/zhangxishuo/zhangxishuo.github.io.git
   branch: master

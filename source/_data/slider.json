@@ -1,11 +1,11 @@
 [{
-    "image": "http://lorempixel.com/580/250/nature/1",
+    "image": "https://zhangxishuo.github.io/hexo-images/slider/snowy_mountain.jpg",
     "align": "center",
-    "title": "This is our big Tagline!",
-    "subtitle": "Here's our small slogan.",
+    "title": "成功之道",
+    "subtitle": "简单的事情重复做，重复的事情认真做",
 	"link": "/"
 }, {
-    "image": "http://lorempixel.com/580/250/nature/2",
+    "image": "https://zhangxishuo.github.io/hexo-images/slider/sicao_green_tunnel.jpg",
     "align": "left",
     "title": "Left Aligned Caption",
     "subtitle": "Here's our small slogan.",

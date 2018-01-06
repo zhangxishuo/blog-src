@@ -34,8 +34,8 @@ menu:
 
 # 颜色配置
 color:
-  header: indigo
-  footer: indigo
+  header: deep-purple
+  footer: deep-purple
   page_nav: indigo
   side_nav: indigo darken-1
   tag: pink lighten-1
@@ -54,7 +54,7 @@ color:
 archive_yearly: true
 
 # 版权信息
-copyright: © 2016 example.com, All rights reserved.
+copyright: © 2018 zhangxishuo.github.io, All rights reserved.
 
 # Disqus评论shortname，若为空则不启用
 disqus_shortname:
