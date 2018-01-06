@@ -5,15 +5,15 @@
     "subtitle": "简单的事情重复做，重复的事情认真做",
 	"link": "/"
 }, {
-    "image": "https://zhangxishuo.github.io/hexo-images/slider/sicao_green_tunnel.jpg",
+    "image": "https://zhangxishuo.github.io/hexo-images/slider/girly_desk.jpg",
     "align": "left",
-    "title": "Left Aligned Caption",
-    "subtitle": "Here's our small slogan.",
+    "title": "工作之道",
+    "subtitle": "守信，惜时",
 	"link": null
 }, {
-    "image": "http://lorempixel.com/580/250/nature/3",
+    "image": "https://zhangxishuo.github.io/hexo-images/slider/sicao_green_tunnel.jpg",
     "align": "right",
-    "title": "Right Aligned Caption",
-    "subtitle": "Here's our small slogan.",
+    "title": "人生之道",
+    "subtitle": "心如净水，洁身自好",
 	"link": null
 }]
