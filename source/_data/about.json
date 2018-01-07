@@ -1,5 +1,5 @@
 {
-    "avatar": "http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg",
+    "avatar": "https://blog-images-1253606956.cos.ap-beijing.myqcloud.com/hexo-images/avatar/avatar.png",
     "name": "张喜硕",
     "tag": "Web全栈/不宅",
     "desc": "code & idea change the world.",
@@ -11,18 +11,18 @@
     		"PHP": 8
     },
     "projects": [{
-        "name": "你的项目A",
-        "image": "https://d13yacurqjgara.cloudfront.net/users/138819/screenshots/2578899/dribbble_800x600_01_1x.png",
-        "tags": ["2016年", "项目标签"],
-        "description": "你的项目A的简介",
-        "link_text": "网站链接",
-        "link": "https://dribbble.com/"
+        "name": "洛克旅游文章生成系统",
+        "image": "https://blog-images-1253606956.cos.ap-beijing.myqcloud.com/hexo-images/project/butterfly_green.jpg",
+        "tags": ["PHP", "微信"],
+        "description": "ThinkPHP5制作的内容管理系统，可以根据景点、行程、定制师生成一篇手机端微信分享的文章，用于洛克旅游宣传。",
+        "link_text": "项目地址",
+        "link": "http://beautifulartical.yunzhiclub.com"
     }, {
-        "name": "你的作品B",
-        "image": "https://d13yacurqjgara.cloudfront.net/users/4094/screenshots/2578885/time-lords-drib_1x.jpg",
-        "description": "你的作品B的简介",
-        "tags": ["Github", "设计"],
-        "link_text": "Github地址",
-        "link": "https://github.com/"
+        "name": "云智出勤管理系统",
+        "image": "https://blog-images-1253606956.cos.ap-beijing.myqcloud.com/hexo-images/project/spring_flowers.jpg",
+        "description": "梦云智实验室的出勤管理系统，我们练手的项目。管理课程及请假等操作，可实现钉钉机器人按时推送功能。",
+        "tags": ["PHP", "第一个项目"],
+        "link_text": "项目地址",
+        "link": "http://coursemanagesystem.yunzhiclub.com"
     }]
 }
