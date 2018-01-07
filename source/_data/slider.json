@@ -1,19 +1,19 @@
 [{
-    "image": "https://zhangxishuo.github.io/hexo-images/slider/snowy_mountain.jpg",
+    "image": "https://blog-images-1253606956.cos.ap-beijing.myqcloud.com/hexo-images/slider/snowy_mountain.jpg",
     "align": "center",
     "title": "成功之道",
     "subtitle": "简单的事情重复做，重复的事情认真做",
-	"link": "/"
+	  "link": "/"
 }, {
-    "image": "https://zhangxishuo.github.io/hexo-images/slider/girly_desk.jpg",
+    "image": "https://blog-images-1253606956.cos.ap-beijing.myqcloud.com/hexo-images/slider/girly_desk.jpg",
     "align": "left",
     "title": "工作之道",
     "subtitle": "守信，惜时",
-	"link": null
+	  "link": null
 }, {
-    "image": "https://zhangxishuo.github.io/hexo-images/slider/sicao_green_tunnel.jpg",
+    "image": "https://blog-images-1253606956.cos.ap-beijing.myqcloud.com/hexo-images/slider/at_peace.jpg",
     "align": "right",
     "title": "人生之道",
-    "subtitle": "心如净水，洁身自好",
-	"link": null
+    "subtitle": "心若净水，曲径通幽",
+	  "link": null
 }]
