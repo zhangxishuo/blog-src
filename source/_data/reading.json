@@ -7,26 +7,26 @@
     "contents": {
         "readed": [{
             "title": "代码整洁之道",
-            "cover": "https://zhangxishuo.github.io/hexo-images/reading/readed/playing_chess.jpg",
+            "cover": "https://blog-images-1253606956.cos.ap-beijing.myqcloud.com/hexo-images/reading/readed/playing_chess.jpg",
             "review": "可以学到一些规范，但不完全适合我们日常开发",
             "score": "8.5",
             "doubanLink": "https://book.douban.com/subject/4199741/"
         }],
 
 		    "reading": [{
-            "title": "网络游戏核心技术与实战",
-            "cover": "http://img4.douban.com/lpic/s27881888.jpg",
+            "title": "AngularJS",
+            "cover": "",
             "review": "",
-            "score": null,
-            "doubanLink": "http://book.douban.com/subject/25850090/"
+            "score": "9",
+            "doubanLink": ""
         }],
 
         "wanted": [{
-            "title": "计算机程序的构造和解释",
-            "cover": "http://img4.douban.com/lpic/s1113106.jpg",
+            "title": "SpringMVC",
+            "cover": "",
             "review": "",
-            "score": null,
-            "doubanLink": "http://book.douban.com/subject/1148282/"
+            "score": "9",
+            "doubanLink": ""
         }]
     }
 }
