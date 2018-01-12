@@ -41,9 +41,9 @@ tags:
 var self  = this;
 
 self.init = function() {
-  var id  = $stateParams.id;
-  var url = 'http://127.0.0.1:8080/Teacher/' + id;
-  $http.get(url)
+  var id  = $stateParams.id;                              // 获取url中的id值
+  var url = 'http://127.0.0.1:8080/Teacher/' + id;        // 拼接后台url
+  $http.get(url)                                          // 发起get请求
     .then(function success(response) {
       $scope.data = response.data;
     }, function error(response) {
