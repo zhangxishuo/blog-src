@@ -41,7 +41,7 @@ var demo = function (callback) {
 
 ```javascript
 demo(function () {
-  //
+  console.log('This is callback');
 });
 ```
 
@@ -65,11 +65,11 @@ self.init = function() {
   var url = 'http://127.0.0.1:8080/Teacher/' + id;        // 拼接后台url
   $http.get(url)                                          // 发起get请求
     .then(function success(response) {
-      $scope.data = response.data;
-    }, function error(response) {
-      console.log(url + 'error');
-      console.log(response);
-    });
+            $scope.data = response.data;
+          }, function error(response) {
+            console.log(url + 'error');
+            console.log(response);
+          });
 };
 
 self.init();
