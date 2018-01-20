@@ -192,3 +192,36 @@ Status DeQueue(LinkQueue &Q, QElemType &e) {
 ## ***循环队列***
 
 头指针始终指向队列头元素，尾指针始终指向队列尾元素的下一个位置。
+
+为了区别循环队列的判空与判满，规定，队列头指针在队列尾指针的下一位置是队列满的标志。
+
+```c
+#define MAXQSIZE 100                  // 最大队列长度
+typedef struct {
+  QElemType *base;                    // 分配的存储空间地址
+  int front;                          // 头指针，指向队列头元素
+  int rear;                           // 尾指针，指向队列尾元素的下一个位置
+} SqQueue;
+```
+
+```c
+Status EnQueue(SqQueue &Q, QElemType e) {
+  if ((Q.rear + 1) % MAXQSIZE == Q.front) {
+    return ERROR;                     // 队列满
+  }
+  Q.base[Q.rear] = e;
+  Q.rear = (Q.rear + 1) % MAXQSIZE;
+  return OK;
+}
+```
+
+```c
+Status DeQueue(SqQueue &Q, QElemType &e) {
+  if (Q.front == Q.rear) {
+    return ERROR;                     // 队列空
+  }
+  e = Q.base[Q.front];
+  Q.front = (Q.front + 1) % MAXQSIZE;
+  return OK;
+}
+```
