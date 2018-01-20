@@ -1,5 +1,5 @@
 ---
-title: 数据结构总结(一)
+title: 线性表
 date: 2018-01-19 17:55:25
 categories: 学习
 tags:
