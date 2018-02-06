@@ -225,7 +225,7 @@ function ajaxGet(url, success) {
 /* 页面加载完成后，即执行hotelGetCity()方法 */
 window.onload = function () {
     hotelGetCity();
-}
+};
 ```
 
 ## 后台
@@ -273,66 +273,63 @@ public function getHotelName() {
 ```php
 /* Hotel.php */
 
-class Hotel extends Model {
-
-    public function getAllCountries() {
-        $countries = [];
-        $hotels    = self::all();
-        if (!is_null($hotels)) {
-            foreach ($hotels as $hotel) {
-                array_push($countries, $hotel->country);
-            }
+public function getAllCountries() {
+    $countries = [];
+    $hotels    = self::all();
+    if (!is_null($hotels)) {
+        foreach ($hotels as $hotel) {
+            array_push($countries, $hotel->country);
         }
-
-        return $this->reIndex($countries);
     }
 
-    public function getCitiesByCountry($country) {
-        $cities = [];
-        $hotels = self::where('country', '=', $country)->select();
-        if (!is_null($hotels)) {
-            foreach ($hotels as $hotel) {
-                array_push($cities, $hotel->city);
-            }
+    return $this->reIndex($countries);
+}
+
+public function getCitiesByCountry($country) {
+    $cities = [];
+    $hotels = self::where('country', '=', $country)->select();
+    if (!is_null($hotels)) {
+        foreach ($hotels as $hotel) {
+            array_push($cities, $hotel->city);
         }
-
-	return $this->reIndex($cities);
     }
 
-    public function getStarsByCountryAndCity($country, $city) {
-        $stars = [];
-        $map   = [];
-        $map['country'] = $country;
-        $map['city']    = $city;
-        $hotels = self::where($map)->select();
-        if(!is_null($hotels)) {
-            foreach ($hotels as $hotel) {
-                array_push($stars, $hotel->star_level);
-            }
+    return $this->reIndex($cities);
+}
+
+public function getStarsByCountryAndCity($country, $city) {
+    $stars = [];
+    $map   = [];
+    $map['country'] = $country;
+    $map['city']    = $city;
+    $hotels = self::where($map)->select();
+    if(!is_null($hotels)) {
+        foreach ($hotels as $hotel) {
+            array_push($stars, $hotel->star_level);
         }
-
-	return $this->reIndex($stars);
     }
 
-    public function getHotelsByCountryAndCityAndStar($country, $city, $star) {
-        $map               = [];
-        $map['country']    = $country;
-        $map['city']       = $city;
-        $map['star_level'] = $star;
-        $hotels = self::where($map)->select();
-        return $hotels;
-    }
+    return $this->reIndex($stars);
+}
 
-    public function reIndex($array) {
-	$temps = array_unique($array);
-	$array = [];
+public function getHotelsByCountryAndCityAndStar($country, $city, $star) {
+    $map               = [];
+    $map['country']    = $country;
+    $map['city']       = $city;
+    $map['star_level'] = $star;
+    $hotels = self::where($map)->select();
+    return $hotels;
+}
+
+public function reIndex($array) {
+    $temps = array_unique($array);
+    $array = [];
 
         foreach ($temps as $temp) {
             array_push($array, $temp);
         }
 
-	return $array;
-    }
+    return $array;
 }
 ```
 
