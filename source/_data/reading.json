@@ -14,11 +14,11 @@
         }],
 
 		    "reading": [{
-            "title": "AngularJS",
-            "cover": "",
+            "title": "JavaScript高级程序设计",
+            "cover": "https://blog-images-1253606956.cos.ap-beijing.myqcloud.com/hexo-images/reading/reading/bitcoin_physical.jpg",
             "review": "",
             "score": "9",
-            "doubanLink": ""
+            "doubanLink": "https://book.douban.com/subject/10546125/"
         }],
 
         "wanted": [{
