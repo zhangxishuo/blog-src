@@ -55,7 +55,7 @@ public function post($name = '', $default = null, $filter = null) {
 
 当表单需要提交如文件等时，我们会使用`multipart/form-data`。
 
-# 使用
+# 总结
 
 所以，我们在使用表单时，通常使用`$_POST`获取数据。
 
