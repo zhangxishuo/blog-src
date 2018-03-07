@@ -3,11 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: zhangxishuo
+title: koifish
+motto: 致力于成为一名优秀的全栈工程师
 subtitle:
 description:
-author: John Doe
-language:
+author: 张喜硕
+language: zh-Hans
 timezone:
 
 # URL

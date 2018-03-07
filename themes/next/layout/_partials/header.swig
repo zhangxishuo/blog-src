@@ -16,6 +16,9 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    <div>
+      <span>{{ config.motto }}</span>
+    </div>
       {% if theme.seo %}
         <h1 class="site-subtitle" itemprop="description">{{ config.subtitle }}</h1>
       {% else %}
