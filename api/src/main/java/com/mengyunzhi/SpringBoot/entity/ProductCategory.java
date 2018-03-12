@@ -22,7 +22,7 @@ public class ProductCategory {
 
     private String categoryName;       // 类目名称
 
-    private String categoryType;       // 类目编号
+    private Integer categoryType;      // 类目编号
 
     @CreationTimestamp
     private Date createTime;           // 创建时间
