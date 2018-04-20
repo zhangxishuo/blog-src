@@ -11,7 +11,7 @@ import java.util.Calendar;
 
 /**
  * @author zhangxishuo on 2018/4/20
- * 商品详情实体
+ * 商品信息实体
  */
 
 @Entity
