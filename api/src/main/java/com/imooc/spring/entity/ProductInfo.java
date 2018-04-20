@@ -19,6 +19,9 @@ import java.util.Calendar;
 @NoArgsConstructor
 public class ProductInfo {
 
+    public static final Integer STATUS_NORMAL = 0;     // 正常
+    public static final Integer STATUS_STOP   = 1;     // 下架
+
     private String id;           // 商品id
 
     private String name;         // 商品名称
