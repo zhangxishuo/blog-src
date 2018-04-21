@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
@@ -22,6 +23,7 @@ public class ProductInfo {
     public static final Integer STATUS_NORMAL = 0;     // 正常
     public static final Integer STATUS_STOP   = 1;     // 下架
 
+    @Id
     private String id;           // 商品id
 
     private String name;         // 商品名称
