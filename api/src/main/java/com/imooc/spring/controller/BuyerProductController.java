@@ -4,6 +4,7 @@ import com.imooc.spring.entity.ProductCategory;
 import com.imooc.spring.entity.ProductInfo;
 import com.imooc.spring.service.ProductCategoryService;
 import com.imooc.spring.service.ProductInfoService;
+import com.imooc.spring.utils.ResultViewUtil;
 import com.imooc.spring.view.ProductInfoView;
 import com.imooc.spring.view.ProductView;
 import com.imooc.spring.view.Result;
@@ -68,11 +69,6 @@ public class BuyerProductController {
             productViewList.add(productView);
         }
 
-        Result result = new Result();
-        result.setCode(0);
-        result.setMsg("成功");
-        result.setData(productViewList);
-
-        return result;
+        return ResultViewUtil.success(productViewList);
     }
 }

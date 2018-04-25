@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Result<T> {
 
+    public static final Integer SUCCESS = 0;  // 成功
+
     private Integer code;     // 错误码
 
     private String msg;       // 提示信息
