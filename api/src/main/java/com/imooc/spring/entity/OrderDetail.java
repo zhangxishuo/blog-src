@@ -19,7 +19,7 @@ public class OrderDetail {
     private Integer id;                   // 订单详情id
 
     @ManyToOne
-    private Order order;                  // 订单
+    private OrderMaster orderMaster;      // 订单
 
     @ManyToOne
     private ProductInfo productInfo;      // 商品
@@ -43,12 +43,12 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public Order getOrder() {
-        return order;
+    public OrderMaster getOrderMaster() {
+        return orderMaster;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderMaster(OrderMaster orderMaster) {
+        this.orderMaster = orderMaster;
     }
 
     public ProductInfo getProductInfo() {

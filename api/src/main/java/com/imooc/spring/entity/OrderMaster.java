@@ -14,7 +14,7 @@ import java.util.Calendar;
  */
 
 @Entity
-public class Order {
+public class OrderMaster {
 
     public static final Integer NEW = 0;         // 新下单
 
@@ -49,7 +49,7 @@ public class Order {
     @UpdateTimestamp
     private Calendar updateTime;          // 更新时间
 
-    public Order() {
+    public OrderMaster() {
     }
 
     public String getId() {

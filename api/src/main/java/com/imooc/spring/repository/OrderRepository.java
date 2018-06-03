@@ -1,6 +1,6 @@
 package com.imooc.spring.repository;
 
-import com.imooc.spring.entity.Order;
+import com.imooc.spring.entity.OrderMaster;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 订单仓库层
  */
 
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface OrderRepository extends JpaRepository<OrderMaster, Long> {
 
-    Page<Order> findAllByBuyerOpenid(String buyerOpenid, Pageable pageable);
+    Page<OrderMaster> findAllByBuyerOpenid(String buyerOpenid, Pageable pageable);
 }

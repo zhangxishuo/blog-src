@@ -1,6 +1,6 @@
 package com.imooc.spring.repository;
 
-import com.imooc.spring.entity.Order;
+import com.imooc.spring.entity.OrderMaster;
 import com.imooc.spring.entity.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,5 +13,5 @@ import java.util.List;
 
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> {
 
-    List<OrderDetail> findAllByOrder(Order order);
+    List<OrderDetail> findAllByOrderMaster(OrderMaster orderMaster);
 }
