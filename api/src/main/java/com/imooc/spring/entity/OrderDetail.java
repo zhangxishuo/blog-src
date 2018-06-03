@@ -1,7 +1,5 @@
 package com.imooc.spring.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,8 +12,6 @@ import java.util.Calendar;
  */
 
 @Entity
-@Data
-@NoArgsConstructor
 public class OrderDetail {
 
     @Id
@@ -35,4 +31,55 @@ public class OrderDetail {
 
     @UpdateTimestamp
     private Calendar updateTime;          // 更新时间
+
+    public OrderDetail() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public ProductInfo getProductInfo() {
+        return productInfo;
+    }
+
+    public void setProductInfo(ProductInfo productInfo) {
+        this.productInfo = productInfo;
+    }
+
+    public Integer getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(Integer productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+
+    public Calendar getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Calendar createTime) {
+        this.createTime = createTime;
+    }
+
+    public Calendar getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Calendar updateTime) {
+        this.updateTime = updateTime;
+    }
 }
